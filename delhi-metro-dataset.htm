@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Delhi Metro Dataset-  EDA &amp;  Data Visualization | Kaggle</title>
+  <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+  <meta name="description" content="A comprehensive dataset representing ridership, ticket revenue, and operational " />
+    <meta name="keywords" content="data visualization,exploratory data analysis,pandas,matplotlib,seaborn" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+  <meta name="theme-color" content="#008ABC" />
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" type="text/javascript">
+    window["pageRequestStartTime"] = 1773406634466;
+    window["pageRequestEndTime"] = 1773406634585;
+    window["initialPageLoadStartTime"] = new Date().getTime();
+  </script>
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" id="gsi-client" src="https://accounts.google.com/gsi/client" async defer></script>
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==">window.KAGGLE_JUPYTERLAB_PATH = "/static/assets/jupyterlab-v4/jupyterlab-index-a4bf879e02e34e2b.html";</script>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" /><link rel="preconnect" href="https://stats.g.doubleclick.net" /><link rel="preconnect" href="https://storage.googleapis.com" /><link rel="preconnect" href="https://apis.google.com" />
+    <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" id="dynamic-favicon" />
+  <link rel="manifest" href="/static/json/manifest.json" crossorigin="use-credentials">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="stylesheet" media="print" id="async-google-font-1" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="stylesheet" media="print" id="async-google-font-2" />
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" type="text/javascript">
+    const styleSheetIds = ["async-google-font-1", "async-google-font-2"];
+    styleSheetIds.forEach(function (id) {
+      document.getElementById(id).addEventListener("load", function() {
+        this.media = "all";
+      });
+    });
+  </script>
+
+
+    <link rel="canonical" href="https://www.kaggle.com/datasets/nikhilkumar766/delhi-metro-dataset" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/app.css?v=a53f951c511cf82e" />
+
+  
+    
+ 
+      <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==">
+        try{(function(a,s,y,n,c,h,i,d,e){d=s.createElement("style");
+        d.appendChild(s.createTextNode(""));s.head.appendChild(d);d=d.sheet;
+        y=y.map(x => d.insertRule(x + "{ opacity: 0 !important }"));
+        h.start=1*new Date;h.end=i=function(){y.forEach(x => x<d.cssRules.length ? d.deleteRule(x) : {})};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document,['.site-header-react__nav'],'dataLayer',2000,{'GTM-52LNT9S':true});}catch(ex){}
+    </script>
+    <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-T7QHS60L4Q', {
+            'optimize_id': 'GTM-52LNT9S',
+            'displayFeaturesTask': null,
+            'send_page_view': false,
+            'content_group1': 'Datasets',
+            'user_properties': {
+                'logged_in': true,
+            }
+        });
+    </script>
+    <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" async src="https://www.googletagmanager.com/gtag/js?id=G-T7QHS60L4Q"></script>
+
+
+  
+    
+    <meta property="og:url" content="https://www.kaggle.com/datasets/nikhilkumar766/delhi-metro-dataset" />
+    <meta property="og:title" content="Delhi Metro Dataset-  EDA &amp;  Data Visualization" />
+    <meta property="og:description" content="A comprehensive dataset representing ridership, ticket revenue, and operational " />
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="2665027677054710" />
+
+        <meta property="og:image" content="https://storage.googleapis.com/kaggle-datasets-images/8665882/13633981/a6ceaae31301d80663222e1b54d3741b/dataset-card.jpg?t=2025-11-06-09-48-13" />
+        <meta property="twitter:image" content="https://storage.googleapis.com/kaggle-datasets-images/8665882/13633981/a6ceaae31301d80663222e1b54d3741b/dataset-card.jpg?t=2025-11-06-09-48-13" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@kaggledatasets" />
+
+
+
+
+  <meta name="twitter:site" content="@Kaggle" /> 
+  
+    
+    <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" type="application/ld+json">{"@context":"http://schema.org/","@type":"Dataset","name":"Delhi Metro Dataset-  EDA &amp;  Data Visualization","description":"\n📊 Delhi Metro Ridership &amp; Operational Statistics Dataset\n\n---\n\n##  **Subtitle**\n\nA comprehensive dataset representing ridership, ticket revenue, and operational performance of the Delhi Metro one of the largest urban transit systems in the world.\n\n---\n\n##  **About the Dataset**\n\nThe **Delhi Metro** is a rapid transit system serving the National Capital Region (NCR) of India. It plays a crucial role in reducing traffic congestion and providing sustainable public transportation to millions of passengers every day.\n\nThis dataset captures multiple performance indicators of the Delhi Metro network over time, including:\n\n **Total metro trips operated**\n **Daily total passengers**\n **Ticket revenue**\n **Average passenger distance traveled per trip**\n **Top stations based on passenger demand**\n **Total stations operational**\n\nThese data points help in analyzing metro usage patterns, operational efficiency, and transit demand in the region.\n\n---\n\n##  **Why This Dataset is Useful**\n\nThis dataset enables research in:\n\n Urban transport planning\n Revenue &amp; demand forecasting\n Passenger travel behavior analysis\n Transportation infrastructure optimization\n Dashboard development &amp; data storytelling\n Academic machine learning projects\n\n---\n\n##  **Potential Use Cases**\n\n* **Time-series forecasting** of passengers and revenue\n* **Peak-hour identification** using station-based data\n* **Policy evaluation** on fare changes and new lines\n* **Visualization dashboards** (e.g., Plotly/Dash, Power BI, Tableau)\n\n---\n\n##  **Source**\n\nData has been collected, cleaned, and aggregated using publicly available metro operational insights, news reports, and transit performance summaries released by the Delhi Metro Rail Corporation (DMRC).\n\n---\n\n##  **File Details**\n\n| Field                      | Description                                     |\n| -------------------------- | ----------------------------------------------- |\n| `Date`                     | Date of operation                               |\n| `Total_Trips`              | Number of train trips operated on that day      |\n| `Total_Passengers`         | Total ridership for that day                    |\n| `Total_Revenue`            | Ticketing revenue (₹ INR)                       |\n| `Avg_Fare`                 | Revenue divided by passengers                   |\n| `Avg_Distance`             | Estimated average travel distance per passenger |\n| `Passengers_per_Trip`      | Ridership divided by number of trips            |\n| `Revenue_Ticket`           | Ticket revenue per trip                         |\n| `Ticket_Type` *(optional)* | Type of ticket or trip category                 |\n| `Top_Stations`             | Highest-demand stations on that day             |\n\n*(Adjust fields based on your actual dataset columns — I can refine if you share final structure.)*\n\n---\n\n## **Licensing**\n\n License: **CC BY 4.0**\n(Users must provide attribution when using the dataset)\n\n---\n\nIf you want, I can also add:\n\n Thumbnail Image for Kaggle Dataset\n Tags &amp; Categories for better discoverability\n Example Notebooks (Exploration + Forecast models)\n Dashboard Preview Screenshots\n\n","url":"https://www.kaggle.com/nikhilkumar766/delhi-metro-dataset","version":1,"keywords":["technique, data visualization","technique, exploratory data analysis","packages, pandas","packages, matplotlib","packages, seaborn"],"license":{"@type":"CreativeWork","name":"CC0: Public Domain","url":"https://creativecommons.org/publicdomain/zero/1.0/"},"identifier":["8665882"],"includedInDataCatalog":{"@type":"DataCatalog","name":"Kaggle","url":"https://www.kaggle.com"},"creator":{"@type":"Person","name":"Nikhil Kumar Mishra","url":"https://www.kaggle.com/nikhilkumar766","image":"https://storage.googleapis.com/kaggle-avatars/thumbnails/default-thumb.png"},"distribution":[{"@type":"DataDownload","requiresSubscription":true,"encodingFormat":"zip","fileFormat":"zip","contentUrl":"https://www.kaggle.com/datasets/nikhilkumar766/delhi-metro-dataset/download?datasetVersionNumber=1","contentSize":"3372272 bytes"}],"commentCount":0,"dateModified":"2025-11-06T09:40:14.323Z","discussionUrl":"https://www.kaggle.com/nikhilkumar766/delhi-metro-dataset/discussion","alternateName":"A comprehensive dataset representing ridership, ticket revenue, and operational ","isAccessibleForFree":true,"thumbnailUrl":"https://storage.googleapis.com/kaggle-datasets-images/8665882/13633981/a6ceaae31301d80663222e1b54d3741b/dataset-card.jpg?t=2025-11-06-09-48-13","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"http://schema.org/CommentAction","userInteractionCount":0},{"@type":"InteractionCounter","interactionType":"http://schema.org/DownloadAction","userInteractionCount":1300},{"@type":"InteractionCounter","interactionType":"http://schema.org/ViewAction","userInteractionCount":4175},{"@type":"InteractionCounter","interactionType":"http://schema.org/LikeAction","userInteractionCount":28}]}</script>
+
+
+  
+    
+
+  
+    
+
+
+
+    <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==">window['useKaggleAnalytics'] = true;</script>
+
+  <script id="gapi-target" nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" src="https://apis.google.com/js/api.js" defer
+    async></script>
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" src="/static/assets/runtime.js?v=873d3b7846080bfa"></script>
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" src="/static/assets/vendor.js?v=9573782ffad15f0d"></script>
+  <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" src="/static/assets/app.js?v=53fd8f852077ffca"></script>
+    <script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" type="text/javascript">
+      window.kaggleStackdriverConfig = {
+        key: 'AIzaSyA4eNqUdRRskJsCZWVz-qL655Xa5JEMreE',
+        projectId: 'kaggle-161607',
+        service: 'web-fe',
+        version: 'ci',
+        userId: '16032157'
+      }
+    </script>
+</head>
+<body>
+  <div id="root">
+    
+
+
+
+
+
+
+
+
+<script nonce="rQ/AuTH6YnSOx8CAUyQsHQ==" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    jax: ['input/TeX', 'output/SVG'],
+    "HTML-CSS": {
+    preferredFont: "TeX",
+    availableFonts: ["STIX", "TeX"],
+    linebreaks: {
+    automatic: true
+    },
+    EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+    inlineMath: [["\\(", "\\)"], ["\\\\(", "\\\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+    processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno"
+    },
+    TeX: {
+    noUndefined: {
+    attributes: {
+    mathcolor: "red",
+    mathbackground: "#FFEEEE",
+    mathsize: "90%"
+    }
+    }
+    },
+    Macros: {
+    href: "{}"
+    },
+    skipStartupTypeset: true,
+    messageStyle: "none",
+    extensions: ["Safe.js"],
+    });
+</script>
+<script type="text/javascript" nonce="rQ/AuTH6YnSOx8CAUyQsHQ==">
+  window.addEventListener("DOMContentLoaded", () => {
+    const head = document.getElementsByTagName("head")[0];
+    const lib = document.createElement("script");
+    lib.type = "text/javascript";
+    // Always use the production asset in local dev, which is served from GCS. We tried to proxy and / or serve this
+    // in a better way in localhost, but it didn't work out. See b/328073416#comment8 for details.
+    const forceProdHost = window.location.hostname === "localhost";
+    lib.src = `${forceProdHost ? "https://www.kaggle.com" : ""}/static/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG`;
+    head.appendChild(lib);
+  });
+</script>
+
+
+
+
+
+
+
+    <!-- Cheers, web-6fdc6957f8-ngwb8p. -->
+
+  </div>
+</body>
+</html>
